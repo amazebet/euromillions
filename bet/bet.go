@@ -28,7 +28,7 @@ type Bet struct {
 	Results string
 	ResultsStars string
 	ResultsDate string
-	Duration string
+	Duration string  
 } 
 
 func handleError(err error) {

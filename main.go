@@ -457,4 +457,4 @@ func main() {
 }
 
 // Global template caching
-var templates = template.Must(template.ParseFiles("index.html", "index_pt.html", "stats.html", "stats_pt.html"))
+var templates = template.Must(template.ParseFiles("index.html", "index_pt.html", "stats.html", "stats_pt.html")) 

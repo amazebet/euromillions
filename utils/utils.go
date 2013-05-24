@@ -29,4 +29,4 @@ func sendMail(host, user, pwd, from, to, subject, body, mailType string) error {
 func Notify(mail string, mh int, sh int, lang string) {
 	body := fmt.Sprintf(message[lang], mh, sh)	 
 	sendMail("localhost:25", "", "",  "webmaster@amazebet.com",  mail, "Amazebet results", body, "PLAIN")
-}
+} 
