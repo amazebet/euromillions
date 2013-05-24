@@ -1,0 +1,5 @@
+create table results (id integer primary key autoincrement, date timestamp
+default current_timestamp, n1 integer, n2 integer, n3 integer, n4 integer, n5 integer, s1 integer, s2 integer)
+
+create table bets (id integer primary key autoincrement, date timestamp
+default current_timestamp, n1 integer, n2 integer, n3 integer, n4 integer, n5 integer, s1 integer, s2 integer, mail varchar(128), checked integer, lang varchar(16))

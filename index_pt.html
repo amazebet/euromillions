@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Gerador de apostas Euromilhões</title>
+		<meta name="keywords" content="euro,milhões,apostas,gerador,aleatório,fibonacci,números,primos">
+		<meta name="description" content="Flutuações Quânticas usadas para gerar aposta Euro-Milhões">
+		<link href="/static/css/bootstrap.css" rel="stylesheet">
+	    <link href="/static/css/flat-ui.css" rel="stylesheet">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+		</script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
+		<script src="/static/js/custom_radio.js"></script>
+		<script src="/static/js/bootstrap-tooltip.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("[data-toggle=tooltip]").tooltip("show");
+				$("input[name=mail]").focus();
+			});
+			$(window).resize(function() {
+				$("[data-toggle=tooltip]").tooltip("show");
+			});
+			$("#mail").focus();
+		</script>
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-40410427-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+	</head>
+	<body>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/pt_PT/all.js#xfbml=1&appId=362501703803885";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+		
+		<div style="margin-left:5%; margin-top:16px; width:90%">
+			<h1 style="text-align:center;"><a href="http://amazebet.com">Bem-vindo ao gerador de apostas Euromilhões!</a></h1>
+			<div style="clear:both; overflow:visible;">
+				<div style="float:left;">
+					<h2 class="palette palette-info" style="margin-top:24px; width:240px; align:center; ">Como funciona:</h2>
+				</div>
+				<div class="fb-like" data-href="http://amazebet.com" data-send="true" data-width="450" data-show-faces="false" style="float:right; margin-top:48px; margin-left:12px;">
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+			<h3 class="palette palette-info-dark">Esta ferramenta oferece números verdadeiramente aleatórios (basta carregar em Gerar Aposta!), com a opção de validar a quantidade de números pares, <a href="http://en.wikipedia.org/wiki/Prime_number" target="blank">números primos</a> ou <a href="http://en.wikipedia.org/wiki/Fibonacci_number" target="blank">Fibonacci</a> na sequência principal.</h3>
+			{{if .Bet}}
+			<div class="palette palette-success" style="overflow:auto; clear:both;">
+				<div style="float:left; height:80px;">
+					<h3 class="palette palette-success">
+						Números:
+						{{range .Bet}} 
+							<div class="badge"><h3>{{.}}</h3></div>
+						{{end}} Estrelas:
+						{{range .Stars}}
+							<div class="badge"><h3>{{.}}</h3></div>
+						{{end}}
+					</h3>
+					<p style="margin-top:-76px;" align="center" data-toggle="tooltip" data-placement="top" title="" data-original-title="
+					{{if .Message}}
+					{{.Message}}
+					{{else}}
+						Pares: {{.Evens}} Primos: {{.Primes}} Fibonacci: {{.Fibo}} Soma: {{.Sum}} Altos: {{.High}}
+					{{end}}"></p>
+				</div>
+				<div style="float:left; margin-top:10px;">
+					<h3 class="palette palette-success">
+						<form action="/save">
+							{{range $index, $element := .Bet}} 
+								<input type="hidden" name="n{{$index}}" value="{{$element}}"/>
+							{{end}}
+							{{range $index, $element := .Stars}}
+								<input type="hidden" name="s{{$index}}" value="{{$element}}"/>
+							{{end}}
+							<div style="float:left">
+								<input type="text" placeholder="email para receber resultados" name="mail"/>
+							</div>
+							<div style="float:left; margin-left:24px; width:120px">
+								<a href="javascript:void(0);" onclick="$(this).closest('form').submit()" class="btn btn-large btn-block btn-info">Guardar</a>
+							<p align="center" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Apenas próximo sorteio"></p>
+							</div>
+						</form>
+					</h3>
+				</div>
+			</div>
+			{{end}}
+			<div style="clear:both">
+				<div style="float:left; margin-top:48px; margin-left:64px; width:380px; text-align:right;">
+					<form action="/bet" method="post" id="conditions">
+						Números pares: <input type="text" placeholder="(0-5)" name="even"/><br>
+						Números primos: <input type="text" placeholder="(0-5)" name="prime"><br>
+						Números Fibonacci: <input type="text" placeholder="(0-5)" name="fibonacci"><br>
+						Números altos (>25): <input type="text" placeholder="(0-5)" name="high"><br>
+						Soma (x ± 30): <input type="text" placeholder="(50-240)" name="sum"><br><br>
+						<a href="javascript:void(0);" onclick="$(this).closest('form').submit()" class="btn btn-large btn-block btn-success">Gerar Aposta</a>
+					</form>
+				</div>
+				<div style="margin-left:64px; margin-top:64px; float:left; width:336px; height:280px;">
+					<script type="text/javascript"><!--
+					google_ad_client = "ca-pub-6447742073147361";
+					/* amazebet */
+					google_ad_slot = "6449952123";
+					google_ad_width = 336;
+					google_ad_height = 280;
+					//-->
+					</script>
+					<script type="text/javascript"
+					src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+					</script>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+			<div style="margin-top:48px;">
+				{{if .Results}}
+					<h4 class="palette palette-clouds">
+						Último concurso: &nbsp;
+						{{.Results}} 
+						&nbsp; &nbsp;Estrelas:
+						{{.ResultsStars}} 
+						&nbsp; &nbsp;
+						Date: {{.ResultsDate}}
+					</h4>
+				{{end}}
+			</div>
+			<div style="clear:both;"></div>
+			<div style="margin-top:24px;">
+				<p>Os números Euro Milhões são sorteados aleatóriamente, mas estes números costumam formar padrões que podem ser usados a seu favor.</p>
+				<p>A fonte dos números verdadeiramente aleatórios é <a href="http://150.203.48.55/RawHex.php" target="blank">http://150.203.48.55/RawHex.php</a>. Os números são obtidos através da medição de flutuações quânticas do vacuum. Por outras palavras, são verdadeiramente ao acaso!</p>
+				<p>Pode encontrar a mensagem timeout se o gerador desistir de encontrar a sequência com os dados fornecidos.</p>
+				<p>A seguir são apresentados alguns padrões que o Amazebet suporta. Não deixe de visitar a página de <a href="/stats">Estatísticas</a> para tomar a melhor decisão.
+				<h3>Números Primos</h3>
+				<p>Um sorteio onde todos os números ou onde nenhum seja primo, é raro. Estude os últimos sorteios na página de <a href="/stats">Estatísticas</a> para obter o melhor mix.</p>	
+				<h3>Números Pares/Ímpares</h3>
+				<p>A escolha de um conjunto de números deve conter um mix de números pares e ímpares. Apenas números pares ou apenas números ímpares representam uma minoria dos sorteios. Mais uma vez, utilize a página de <a href="/stats">Estatísticas</a> para escolher a melhor estratégia.</p>
+				<h3>Números Fibonacci</h3>
+				<p>A partir do estudo dos últimos sorteios pode ser interessante escolher pelo menos 1 número Fibonacci.</p>
+				<h3>Números Altos/Baixos</h3>
+				<p>Como é possível verificar na página de <a href="/stats">Estatísticas</a>, os números encontram-se geralmente dispersos por todo o conjunto 1-50. Apenas números altos ou apenas números baixos são uma situação rara e habitualmente a escolha de 2 ou 3 números altos é considerado uma boa mistura. Considera-se um número alto aquele maior que 25.</p>
+				<h3>Soma de Números</h3>
+				<p>Adicione todos os 5 números gerados e tente que esta não tenha uma diferença superior a 30 sobre a média dos últimos 5 ou 10 sorteios. Mais uma vez, esta informação está disponível na página de <a href="/stats">Estatísticas</a>.</p>				
+				{{if .Counter}}
+					<h2 style="margin-top:24px; font-weight:bold; text-align:center; ">
+						{{.Counter}} apostas geradas!
+					</h2>
+				{{end}}
+				<p style="text-align:center;"><a href="/stats">Estatísticas</a></p>
+				<p class="palette-paragraph" style="margin-top:32px; text-align:center;">Aviso Legal: Este projecto não garante o aumento das hipóteses de ganhar qualquer tipo de prémio.</p>
+				<p class="palette-paragraph" style="margin-top:8px; text-align:center;">{{.Duration}}</p>
+			</div>
+		</div>
+	</body>
+</html>

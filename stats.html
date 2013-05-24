@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Euro-millions Bet Generator</title>
+		<meta name="keywords" content="euro,millions,bet,generator,random,fibonacci,prime,numbers">
+		<meta name="description" content="Quantum fluctuations used to generate an Euro-Millions bet">
+		<link href="/static/css/bootstrap.css" rel="stylesheet">
+	    <link href="/static/css/flat-ui.css" rel="stylesheet">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+		</script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+		<script src="/static/js/custom_radio.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+		    // Init jQuery UI slider
+		    $("#slider").slider({
+		        min: 1,
+		        max: 5,
+		        value: {{.Slider}},
+		        orientation: "horizontal",
+		        range: "min",
+		    });
+		});
+		</script>
+
+	</head>
+	<body>
+		
+		<div style="margin-left:5%; margin-top:16px; width:90%">
+			<h1 style="text-align:center;"><a href="http://amazebet.com">Euro-millions bet generator</a> | Stats Page</h1>
+			<div style="clear:both; overflow:visible;">
+				<div style="float:left;">
+					<h2 class="palette palette-info" style="margin-top:24px; width:240px; align:center; ">Draw history:</h2>
+				</div>
+				<div class="fb-like" data-href="http://amazebet.com" data-send="true" data-width="450" data-show-faces="false" style="float:right; margin-top:48px; margin-left:12px;">
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+			<h3 class="palette palette-info-dark">Statistics that help you get guidance on the values to generate a bet. Star numbers are excluded.</h3>
+			<div style="clear:both; margin-top:32px;">
+				<div>
+					<div style="float:left;">
+						<h3>Draws to consider ({{.Limit}}):</h3>
+					</div>
+					<div style="float:left; margin-left:32px; width:320px; margin-top:18px;">
+						<div id="slider" class="ui-slider">
+	             		   <div class="ui-slider-segment"></div>
+	              	  		<div class="ui-slider-segment"></div>
+	              	  		<div class="ui-slider-segment"></div>
+						</div>
+					</div>
+					<div style="float:left; width:128px; margin-left:16px;">
+						<form action="/stats" method="post">
+							<input type="hidden" name="slidervalue" value=""/>
+							<a href="javascript:void(0);" onclick="$('input[name=slidervalue]').attr('value', $('#slider').slider('option', 'value')); $(this).closest('form').submit()" class="btn btn-large btn-block btn-info">Go</a>
+						</form>
+					</div>
+	            </div>
+				<div style="clear:both"></div>
+				<div style="float:left; margin-top:24px;">
+					<table width="580 px">
+						<tr><td>Date</td><td>Numbers</td><td>Stars</td><td># Evens</td><td># Primes</td><td># Fibo</td><td>Sum</td><td># High</td></tr>
+						{{range .Rows}}
+							{{.}}
+						{{end}}
+					</table>
+				</div>
+
+			</div>
+			<div style="clear:both;"></div>
+			<div style="margin-top:24px;">
+				<p style="text-align:center;"><a href="/">Home</a> | <a href="/stats">Stats</a></p>
+				<p class="palette-paragraph" style="margin-top:32px; text-align:center;">Disclaimer: This project makes no promisse whatsoever as to increase your chances of winning any prize.</p>
+			</div>
+		</div>
+	</body>
+</html>
